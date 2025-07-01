@@ -121,6 +121,11 @@
             font-size: 14px;
         }
 
+        .logo-img {
+            height: 100px; /* Atur ukuran sesuai kebutuhan */
+            object-fit: contain;
+        }
+
         .divider::before, .divider::after {
             content: "";
             flex: 1;
@@ -198,8 +203,8 @@
         @media (max-width: 768px) {
             .logo {
                 position: static;
-                margin-bottom: 16px;
                 text-align: center;
+                margin-bottom: 20px;
             }
         }
 
