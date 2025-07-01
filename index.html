@@ -3,44 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
+    <title>Get Started - Sign Up</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #4F46E5;
+            --text-color: #111827;
+            --light-text: #6B7280;
+            --border-color: #E5E7EB;
+            --google-btn-border: #D1D5DB;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', sans-serif;
         }
 
         body {
-            background-color: #f5f5f5;
+            background-color: #F9FAFB;
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+        }
+
+        .logo {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            font-weight: 600;
+            font-size: 20px;
+            color: var(--primary-color);
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        .form-section {
+            flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            padding: 20px;
+            padding: 40px;
         }
 
-        .signup-container {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        .form-container {
             width: 100%;
             max-width: 400px;
-            padding: 40px;
-            animation: fadeIn 0.5s ease-in-out;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .image-section {
+            flex: 1;
+            background-color: #F3F4F6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            background-image: url('https://via.placeholder.com/800x600/F3F4F6/6B7280?text=Your+Image+Here');
+            background-size: cover;
+            background-position: center;
         }
 
         h1 {
-            color: #333;
-            margin-bottom: 30px;
             font-size: 24px;
             font-weight: 600;
+            margin-bottom: 32px;
             text-align: center;
         }
 
@@ -50,87 +81,85 @@
 
         label {
             display: block;
+            font-weight: 500;
             margin-bottom: 8px;
-            font-weight: 600;
-            color: #333;
             font-size: 14px;
         }
 
         input {
             width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
             font-size: 14px;
-            transition: border-color 0.3s, box-shadow 0.3s;
+            transition: all 0.2s;
         }
 
         input:focus {
             outline: none;
-            border-color: #4a90e2;
-            box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
         }
 
         input::placeholder {
-            color: #aaa;
+            color: var(--light-text);
         }
 
         .divider {
-            height: 1px;
-            background-color: #eee;
-            margin: 25px 0;
-            position: relative;
+            display: flex;
+            align-items: center;
+            margin: 24px 0;
+            color: var(--light-text);
+            font-size: 14px;
+        }
+
+        .divider::before, .divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .divider::before {
+            margin-right: 16px;
         }
 
         .divider::after {
-            content: "Or";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 0 10px;
-            color: #999;
-            font-size: 12px;
+            margin-left: 16px;
         }
 
         .btn {
+            display: block;
             width: 100%;
             padding: 12px;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: 600;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 14px;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
+            transition: all 0.2s;
         }
 
         .btn-primary {
-            background-color: #4a90e2;
+            background-color: var(--primary-color);
             color: white;
-            margin-bottom: 20px;
+            border: none;
         }
 
         .btn-primary:hover {
-            background-color: #3a7bc8;
-        }
-
-        .btn-primary:active {
-            transform: scale(0.98);
+            background-color: #4338CA;
         }
 
         .btn-google {
             background-color: white;
-            color: #333;
-            border: 1px solid #ddd;
+            color: var(--text-color);
+            border: 1px solid var(--google-btn-border);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .btn-google:hover {
-            background-color: #f9f9f9;
+            background-color: #F9FAFB;
         }
 
         .btn-google img {
@@ -138,66 +167,91 @@
             height: 18px;
         }
 
-        .password-match {
+        .password-feedback {
             font-size: 12px;
-            color: #4CAF50;
-            margin-top: 5px;
+            margin-top: 4px;
             display: none;
         }
 
-        .password-mismatch {
-            font-size: 12px;
-            color: #f44336;
-            margin-top: 5px;
-            display: none;
+        .match {
+            color: #10B981;
         }
 
-        .input-error {
-            border-color: #f44336;
+        .mismatch {
+            color: #EF4444;
         }
 
-        .input-success {
-            border-color: #4CAF50;
+        @media (max-width: 1024px) {
+            .image-section {
+                display: none;
+            }
         }
 
-        @media (max-width: 480px) {
-            .signup-container {
-                padding: 30px 20px;
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .form-section {
+                padding: 60px 24px;
+            }
+
+            .logo {
+                top: 20px;
+                left: 20px;
+            }
+        }
+
+        @media (orientation: landscape) and (max-width: 1024px) {
+            .container {
+                flex-direction: row;
+            }
+
+            .image-section {
+                display: flex;
             }
         }
     </style>
 </head>
 <body>
-    <div class="signup-container">
-        <h1>Get Started</h1>
+    <div class="logo">YourLogo</div>
+    
+    <div class="container">
+        <div class="form-section">
+            <div class="form-container">
+                <h1>Get Started</h1>
+                
+                <form id="signupForm">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Enter your password" required minlength="6">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm your password</label>
+                        <input type="password" id="confirmPassword" placeholder="Enter your password" required>
+                        <div id="passwordMatch" class="password-feedback match">Passwords match!</div>
+                        <div id="passwordMismatch" class="password-feedback mismatch">Passwords do not match</div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                    
+                    <div class="divider">Or</div>
+                    
+                    <button type="button" class="btn btn-google">
+                        <img src="https://www.google.com/favicon.ico" alt="Google">
+                        <span>Masuk dengan Google</span>
+                    </button>
+                </form>
+            </div>
+        </div>
         
-        <form id="signupForm">
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Enter your email" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Enter your password" required minlength="6">
-            </div>
-            
-            <div class="form-group">
-                <label for="confirmPassword">Confirm your password</label>
-                <input type="password" id="confirmPassword" placeholder="Enter your password" required>
-                <div id="passwordMatch" class="password-match">Passwords match!</div>
-                <div id="passwordMismatch" class="password-mismatch">Passwords do not match</div>
-            </div>
-            
-            <div class="divider"></div>
-            
-            <button type="submit" class="btn btn-primary">Sign Up</button>
-            
-            <button type="button" class="btn btn-google">
-                <img src="https://www.google.com/favicon.ico" alt="Google logo">
-                <span>Sign Up with Google</span>
-            </button>
-        </form>
+        <div class="image-section"></div>
     </div>
 
     <script>
@@ -208,22 +262,20 @@
             const passwordMatch = document.getElementById('passwordMatch');
             const passwordMismatch = document.getElementById('passwordMismatch');
             
-            // Check password match in real-time
+            // Real-time password validation
             confirmPassword.addEventListener('input', function() {
                 if (password.value && confirmPassword.value) {
                     if (password.value === confirmPassword.value) {
-                        confirmPassword.classList.remove('input-error');
-                        confirmPassword.classList.add('input-success');
+                        confirmPassword.style.borderColor = '#10B981';
                         passwordMatch.style.display = 'block';
                         passwordMismatch.style.display = 'none';
                     } else {
-                        confirmPassword.classList.remove('input-success');
-                        confirmPassword.classList.add('input-error');
+                        confirmPassword.style.borderColor = '#EF4444';
                         passwordMatch.style.display = 'none';
                         passwordMismatch.style.display = 'block';
                     }
                 } else {
-                    confirmPassword.classList.remove('input-error', 'input-success');
+                    confirmPassword.style.borderColor = 'var(--border-color)';
                     passwordMatch.style.display = 'none';
                     passwordMismatch.style.display = 'none';
                 }
@@ -253,25 +305,16 @@
                     return;
                 }
                 
-                // Simulate form submission
-                console.log('Form submitted:', {
-                    email: email,
-                    password: passwordVal
-                });
-                
-                // Show success message (in a real app, you would redirect or show a success message)
+                // Form submission logic would go here
+                console.log('Form submitted:', { email, password: passwordVal });
                 alert('Account created successfully!');
                 form.reset();
-                confirmPassword.classList.remove('input-error', 'input-success');
-                passwordMatch.style.display = 'none';
-                passwordMismatch.style.display = 'none';
             });
             
             // Google signup button
             document.querySelector('.btn-google').addEventListener('click', function() {
-                // In a real app, this would trigger Google OAuth flow
                 console.log('Google signup clicked');
-                alert('Redirecting to Google signup...');
+                // Google OAuth implementation would go here
             });
         });
     </script>
